@@ -1,0 +1,300 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Game Warrior Template</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Game Warrior Template">
+	<meta name="keywords" content="warrior, game, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->   
+	<link href="{% static 'img/favicon.ico' %}" rel="shortcut icon"/>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+
+
+</head>
+<body>
+	<header class="header-section">
+		<div class="container">
+			<!-- logo -->
+			<a class="site-logo" href="{% url 'index' %}">
+				<img src="{% static 'img/logo.png' %}" alt="">
+			</a>
+			<div class="user-panel">
+				<a href="#">Login</a>  /  <a href="#">Register</a>
+			</div>
+			<!-- responsive -->
+			<div class="nav-switch">
+				<i class="fa fa-bars"></i>
+			</div>
+			<!-- site menu -->
+			<nav class="main-menu">
+				<ul>
+					<li><a href="{% url 'index' %}">Home</a></li>
+					<li><a href="{% url 'categories' %}">Blog</a></li>
+					<li><a href="{% url 'contact' %}">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Header section end -->
+
+
+	<!-- Hero section -->
+	<section class="hero-section">
+		{% for i in main %}
+		<div class="hero-slider owl-carousel">
+			<div class="hs-item set-bg" data-setbg="{{i.img.url}}">
+				<div class="hs-text">
+					<div class="container">
+						<h2>{{i.title}}</h2>
+						<p>{{i.text}}</p>
+						<a href="https://go.mail.ru/search?fr=ps&gp=843253&q=NEed%20for%20speed%20&src=go&sbmt=1643986693406&hasnavig=0" class="site-btn">Read More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</section>
+	<!-- Hero section end -->
+
+
+	<!-- Latest news section -->
+	<div class="latest-news-section">
+		<div class="ln-title">Latest News</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+				<div class="nt-item"><span class="new">new</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+				<div class="nt-item"><span class="strategy">strategy</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
+				<div class="nt-item"><span class="racing">racing</span>Isum dolor sit amet, consectetur adipiscing elit. </div>
+			</div>
+		</div>
+	</div>
+	<!-- Latest news section end -->
+
+
+	<!-- Feature section -->
+	<section class="feature-section spad">
+		<div class="container">
+			<div class="row">
+				{% for i in ad %}
+				<div class="col-lg-3 col-md-6 p-0">
+					<div style="width: 294px; height: 415px;" class="feature-item set-bg" data-setbg="{{i.img.url}}">
+						<span class="cata new">{{i.category}}</span>
+						<div class="fi-content text-white">
+							<h5><a href="#">{{i.title}}</a></h5>
+							<p>{{i.text}}</p>
+							<a href="#" class="fi-comment">{{i.comments}} Comments</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Feature section end -->
+
+
+	<!-- Recent game section  -->
+	<section class="recent-game-section spad set-bg" data-setbg="{% static 'img/recent-game-bg.png' %}">
+		<div class="container">
+			<div class="section-title">
+				<div class="cata new">new</div>
+				<h2>Recent Games</h2>
+			</div>
+			<div class="row">
+				{% for i in recentgame %}
+				<div class="col-lg-4 col-md-6">
+					<div class="recent-game-item">
+						<div style="width: 362px; height: 204px;" class="rgi-thumb set-bg" data-setbg="{{i.img.url}}">
+							<div class="cata new">{{i.category}}</div>
+						</div>
+						<div class="rgi-content">
+							<h5>{{i.title}}</h5>
+							<p>{{i.text}}</p>
+							<a href="#" class="comment">{{i.comments}} Comments</a>
+							<div class="rgi-extra">
+								<div class="rgi-star"><img src="{% static 'img/icons/star.png' %}" alt=""></div>
+								<div class="rgi-heart"><img src="{% static 'img/icons/heart.png' %}" alt=""></div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Recent game section end -->
+
+
+	<!-- Tournaments section -->
+	<section class="tournaments-section spad">
+		<div class="container">
+			<div class="tournament-title">Tournaments</div>
+			<div class="row">
+				{% for a in gameinfo %}
+				<div class="col-md-6">
+					<div class="tournament-item mb-4 mb-lg-0">
+						<div class="ti-notic">Premium Tournament</div>
+						<div class="ti-content">
+							<div class="ti-thumb set-bg" data-setbg="{{a.img.url}}"></div>
+							<div class="ti-text">
+								<h4>{{a.name}}</h4>
+								<ul>
+									<li><span>Tournament Beggins:</span> {{a.musobaqa}}</li>
+									<li><span>Tounament Ends:</span> {{a.end}}</li>
+									<li><span>Participants:</span> {{a.teams}}</li>
+									<li><span>Tournament Author:</span> Olimjon</li>
+								</ul>
+								<p><span>Prizes:</span> 1st place {{a.prize1}}, 2nd place: {{a.prize2}}, 3rd place: {{a.prize3}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Tournaments section bg -->
+
+
+	<!-- Review section -->
+	<section class="review-section spad set-bg" data-setbg="{% static 'img/review-bg.png' %}">
+		<div class="container">
+			<div class="section-title">
+				<div class="cata new">new</div>
+				<h2>Recent Reviews</h2>
+			</div>
+			<div class="row">
+				{% for i in recent %}
+				<div class="col-lg-3 col-md-6">
+					<div class="review-item">
+						<div style="width: 264px; height: 345px;" class="review-cover set-bg" data-setbg="{{i.img.url}}">
+							<div class="score yellow">{{i.score}}</div>
+						</div>
+						<div class="review-text">
+							<h5>{{i.name}}</h5>
+							<p>{{i.text}}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Review section end -->
+
+
+	<!-- Footer top section -->
+	<section class="footer-top-section">
+		<div class="container">
+			<div class="footer-top-bg">
+				<img src="{% static 'img/footer-top-bg.png' %}" alt="">
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="footer-logo text-white">
+						<img src="{% static 'img/footer-logo.png' %}" alt="">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-widget mb-5 mb-md-0">
+						<h4 class="fw-title">Latest Posts</h4>
+						<div class="latest-blog">
+							<div class="lb-item">
+								<div class="lb-thumb set-bg" data-setbg="{% static 'img/latest-blog/1.jpg' %}"></div>
+								<div class="lb-content">
+									<div class="lb-date">June 21, 2018</div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
+									<a href="#" class="lb-author">By Admin</a>
+								</div>
+							</div>
+							<div class="lb-item">
+								<div class="lb-thumb set-bg" data-setbg="{% static 'img/latest-blog/2.jpg' %}"></div>
+								<div class="lb-content">
+									<div class="lb-date">June 21, 2018</div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
+									<a href="#" class="lb-author">By Admin</a>
+								</div>
+							</div>
+							<div class="lb-item">
+								<div class="lb-thumb set-bg" data-setbg="{% static 'img/latest-blog/3.jpg' %}"></div>
+								<div class="lb-content">
+									<div class="lb-date">June 21, 2018</div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
+									<a href="#" class="lb-author">By Admin</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-widget">
+						<h4 class="fw-title">Top Comments</h4>
+						<div class="top-comment">
+							<div class="tc-item">
+								<div class="tc-thumb set-bg" data-setbg="{% static 'img/authors/1.jpg' %}"></div>
+								<div class="tc-content">
+									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
+									<div class="tc-date">June 21, 2018</div>
+								</div>
+							</div>
+							<div class="tc-item">
+								<div class="tc-thumb set-bg" data-setbg="{% static 'img/authors/2.jpg' %}"></div>
+								<div class="tc-content">
+									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
+									<div class="tc-date">June 21, 2018</div>
+								</div>
+							</div>
+							<div class="tc-item">
+								<div class="tc-thumb set-bg" data-setbg="{% static 'img/authors/3.jpg' %}"></div>
+								<div class="tc-content">
+									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
+									<div class="tc-date">June 21, 2018</div>
+								</div>
+							</div>
+							<div class="tc-item">
+								<div class="tc-thumb set-bg" data-setbg="{% static 'img/authors/4.jpg' %}"></div>
+								<div class="tc-content">
+									<p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
+									<div class="tc-date">June 21, 2018</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer top section end -->
+
+	
+	<footer class="footer-section">
+		<div class="container">
+			<ul class="footer-menu">
+				<li><a href="{% url 'index' %}">Home</a></li>
+				<li><a href="review.html">Games</a></li>
+				<li><a href="categories.html">Blog</a></li>
+				<li><a href="community.html">Forums</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			<p class="copyright">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+</p>
+		</div>
+	</footer>
+
+
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/jquery.marquee.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>
